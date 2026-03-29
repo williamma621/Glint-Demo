@@ -1,0 +1,14 @@
+{
+  "person_id": "alice",
+  "consent": true,
+  "chat_history": [
+    {
+      "role": "assistant",
+      "content": "Tell me about yourself and what kind of relationship you want."
+    },
+    {
+      "role": "user",
+      "content": "I'm a woman, 29, based in San Francisco, and I work in product design. I am thoughtful, curious, and a little introverted. I love hiking, reading, cooking, and music. I'm looking for a serious long-term relationship with a man between 28 and 36. Kindness, honesty, humor, and emotional maturity matter a lot to me. I don't want someone who smokes."
+    }
+  ]
+}

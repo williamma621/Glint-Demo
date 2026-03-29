@@ -1,0 +1,116 @@
+{
+  "person_id": "alice",
+  "basic_profile": {
+    "age": null,
+    "gender_identity": "woman",
+    "location": null,
+    "occupation": null,
+    "lifestyle_tags": [
+      "hiking",
+      "reading",
+      "cooking"
+    ]
+  },
+  "relationship_intent": {
+    "looking_for": "long_term",
+    "timeline": null
+  },
+  "constraints": {
+    "age_min": null,
+    "age_max": null,
+    "genders": [
+      "man"
+    ],
+    "locations": [],
+    "max_distance_km": null,
+    "relationship_intents": [
+      "long_term"
+    ],
+    "smoking_ok": false,
+    "drinking_ok": null
+  },
+  "dealbreakers": {
+    "explicit": [
+      "no_smoking"
+    ]
+  },
+  "traits_structured": {
+    "values": [
+      "kindness",
+      "humor",
+      "honesty"
+    ],
+    "interests": [
+      "hiking",
+      "reading",
+      "cooking",
+      "music"
+    ],
+    "personality_traits": [
+      "introverted",
+      "thoughtful"
+    ],
+    "desired_partner_traits": [
+      "kind"
+    ]
+  },
+  "self_summary": "Assistant: tell me about yourself and what kind of relationship you want",
+  "desired_partner_summary": "Looking for a serious long-term relationship with a man between 28 and 36. kindness, honesty, humor, and emotional maturity matter a lot to me. i don't want someone who smokes.",
+  "self_vector": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "desired_vector": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0
+  ],
+  "extraction_confidence": 0.45,
+  "consent_status": "consented",
+  "created_at": "2026-03-27T02:09:12.303215+00:00",
+  "updated_at": "2026-03-27T02:09:12.303215+00:00",
+  "debug_source_hash": "5b443fbdc92604db03fc16a31a0dc61e6a7e8dfb087f8b10c20356ee9e927aa6"
+}

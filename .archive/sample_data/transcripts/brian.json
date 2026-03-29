@@ -1,0 +1,14 @@
+{
+  "person_id": "brian",
+  "consent": true,
+  "chat_history": [
+    {
+      "role": "assistant",
+      "content": "Tell me about yourself and the kind of person you hope to meet."
+    },
+    {
+      "role": "user",
+      "content": "I am a man, 31, and live in Oakland. Friends would call me calm, honest, and playful. I work in healthcare and spend weekends hiking, cooking, and listening to music. I'm looking for a long-term relationship with a woman around 27 to 34 who is kind, communicative, and emotionally mature. I do not smoke."
+    }
+  ]
+}
