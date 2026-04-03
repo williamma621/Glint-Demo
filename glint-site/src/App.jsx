@@ -1,42 +1,12 @@
 import { useEffect, useMemo, useState } from 'react'
 import './App.css'
-
-const PILLARS = [
-  { key: 'coreValues', label: 'Core Values', group: 'Hard Basics' },
-  { key: 'finance', label: 'Finance', group: 'Hard Basics' },
-  { key: 'family', label: 'Family', group: 'Hard Basics' },
-  { key: 'career', label: 'Career', group: 'Hard Basics' },
-  { key: 'religion', label: 'Religion', group: 'Hard Basics' },
-  { key: 'lifestyle', label: 'Lifestyle', group: 'Hard Basics' },
-  { key: 'socialBattery', label: 'Social Battery', group: 'Hard Basics' },
-  { key: 'attachment', label: 'Attachment', group: 'Soft Dynamics' },
-  { key: 'loveLanguages', label: 'Love Languages', group: 'Soft Dynamics' },
-  { key: 'conflictStyle', label: 'Conflict Style', group: 'Soft Dynamics' },
-  { key: 'intellect', label: 'Intellect', group: 'Soft Dynamics' },
-  { key: 'eq', label: 'EQ', group: 'Soft Dynamics' },
-  { key: 'humor', label: 'Humor', group: 'Soft Dynamics' },
-  { key: 'riskTolerance', label: 'Risk Tolerance', group: 'Soft Dynamics' },
-]
-
-const TYPE_PILLARS = new Set([
-  'lifestyle',
-  'religion',
-  'socialBattery',
-  'attachment',
-  'loveLanguages',
-  'conflictStyle',
-  'humor',
-  'riskTolerance',
-])
-
-const INITIAL_PROFILE = PILLARS.reduce((acc, pillar) => {
-  if (TYPE_PILLARS.has(pillar.key)) {
-    acc[pillar.key] = { type: 'Unknown', confidence: 0 }
-  } else {
-    acc[pillar.key] = { score: 0, confidence: 0 }
-  }
-  return acc
-}, {})
+import { InterviewerPrompt } from './data/prompts'
+import {
+  INITIAL_PROFILE,
+  PILLARS,
+  STYLE_TAG_DEFINITIONS,
+  TYPE_PILLARS,
+} from './data/pillarsDefinition'
 
 const safeJsonParse = (value) => {
   if (typeof value !== 'string') return null
@@ -81,11 +51,6 @@ function App() {
     return () => clearInterval(interval)
   }, [])
 
-  const transcript = useMemo(
-    () => chatHistory.map((m) => `${m.role}: ${m.text}`).join('\n'),
-    [chatHistory]
-  )
-
   const allPillarsConfident = useMemo(
     () =>
       PILLARS.every((pillar) => {
@@ -106,14 +71,16 @@ function App() {
 
     if (allPillarsConfident) {
       const closingReply =
-        'Thank you — I feel I have a clear picture across all pillars. Would you like a short summary?'
+        'Thank you — I feel I have a clear picture across all pillars.'
       setChatHistory([...updatedHistory, { role: 'agent', text: closingReply }])
       return
     }
 
-    // Agent A (Interviewer) call:
-    // System prompt goes here to define empathetic interviewing behavior.
-    // User prompt goes here with the latest transcript to generate the next question.
+    const updatedTranscript = updatedHistory
+      .map((m) => `${m.role}: ${m.text}`)
+      .join('\n')
+
+    // Agent A (Interviewer) call (single prompt):
     const interviewerResponse = await fetch(
       'https://api.deepseek.com/chat/completions',
       {
@@ -126,25 +93,13 @@ function App() {
           model: 'deepseek-chat',
           messages: [
             {
-              role: 'system',
-              content:
-                `You are Agent A, an empathetic interviewer. You want to investigate the user's 14 pillars: ${PILLARS.map(
-                  (pillar) => pillar.label
-                ).join(
-                  ', '
-                )}. You can read Agent B's latest pillar estimates (JSON) to guide you. Ask exactly one question at a time, avoid repetition, follow up if the user is vague, and prioritize pillars with the LOWEST confidence first to raise confidence. If all pillars are already at >= 0.70 confidence, end the conversation with a warm closing and do not ask another question.`,
-            },
-            {
               role: 'user',
-              content: `Transcript so far:\n${transcript}\n\nUser just said: "${message}"\n\nAsk the next single question.`,
-            },
-            {
-              role: 'user',
-              content: `Agent B latest pillar estimates (JSON):\n${JSON.stringify(
-                userProfile,
-                null,
-                2
-              )}\n\nUse this to target the lowest-confidence pillar first.`,
+              content: InterviewerPrompt(
+                updatedTranscript,
+                JSON.stringify(PILLARS, null, 2),
+                JSON.stringify(STYLE_TAG_DEFINITIONS, null, 2),
+                JSON.stringify(userProfile, null, 2)
+              ),
             },
           ],
           temperature: 0.6,
@@ -180,11 +135,15 @@ function App() {
                   (pillar) => pillar.key
                 ).join(
                   ', '
-                )}. For lifestyle, religion, socialBattery, attachment, loveLanguages, conflictStyle, humor, riskTolerance return {type: string, confidence: 0.0-1.0}. For all others return {score: 0-10, confidence: 0.0-1.0}. Update confidence based on evidence in the transcript so far. No extra text.`,
+                )}. ALL pillars are type pillars: return {type: string, confidence: 0.0-1.0} for every pillar. Use the style tag definitions to pick clear, concise tags. Update confidence based on evidence in the transcript so far. No extra text.`,
             },
             {
               role: 'user',
-              content: `Transcript:\n${nextHistory
+              content: `Style tag definitions:\n${JSON.stringify(
+                STYLE_TAG_DEFINITIONS,
+                null,
+                2
+              )}\n\nTranscript:\n${nextHistory
                 .map((m) => `${m.role}: ${m.text}`)
                 .join('\n')}\n\nReturn JSON in this shape:\n${JSON.stringify(
                 INITIAL_PROFILE,
