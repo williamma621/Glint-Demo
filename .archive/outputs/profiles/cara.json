@@ -1,0 +1,109 @@
+{
+  "person_id": "cara",
+  "basic_profile": {
+    "age": null,
+    "gender_identity": "woman",
+    "location": null,
+    "occupation": null,
+    "lifestyle_tags": [
+      "travel",
+      "fitness",
+      "art"
+    ]
+  },
+  "relationship_intent": {
+    "looking_for": "casual",
+    "timeline": null
+  },
+  "constraints": {
+    "age_min": null,
+    "age_max": null,
+    "genders": [
+      "man"
+    ],
+    "locations": [],
+    "max_distance_km": null,
+    "relationship_intents": [
+      "casual"
+    ],
+    "smoking_ok": null,
+    "drinking_ok": null
+  },
+  "dealbreakers": {
+    "explicit": []
+  },
+  "traits_structured": {
+    "values": [],
+    "interests": [
+      "travel",
+      "fitness",
+      "art"
+    ],
+    "personality_traits": [
+      "outgoing"
+    ],
+    "desired_partner_traits": [
+      "funny",
+      "ambitious"
+    ]
+  },
+  "self_summary": "Assistant: what are you like and what are you looking for?\nuser: i'm a woman, 26, outgoing, ambitious, and really into travel, fitness, and art",
+  "desired_partner_summary": "Looking for?\nuser: i'm a woman, 26, outgoing, ambitious, and really into travel, fitness, and art. i want a casual connection for now and i'm open to men. i want someone spontaneous and funny. smoking is okay for me.",
+  "self_vector": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0,
+    1.0,
+    0.0,
+    0.0
+  ],
+  "desired_vector": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0,
+    1.0,
+    0.0,
+    1.0
+  ],
+  "extraction_confidence": 0.45,
+  "consent_status": "consented",
+  "created_at": "2026-03-27T02:09:12.303215+00:00",
+  "updated_at": "2026-03-27T02:09:12.303215+00:00",
+  "debug_source_hash": "7e20c03fa67a6c2a9b9538cb37f4b5923137a2f028243a2983914b590c49b617"
+}

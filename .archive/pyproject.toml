@@ -1,0 +1,21 @@
+[project]
+name = "glint-matchmaking-harness"
+version = "0.1.0"
+description = "Research harness for validating LLM-assisted matchmaking extraction and scoring."
+requires-python = ">=3.12"
+dependencies = [
+    "openai>=1.68.2",
+]
+
+[project.scripts]
+glint-harness = "glint_harness.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

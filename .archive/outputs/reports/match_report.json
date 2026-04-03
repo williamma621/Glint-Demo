@@ -1,0 +1,43 @@
+[
+  {
+    "person_a_id": "alice",
+    "person_b_id": "brian",
+    "hard_filter_pass": true,
+    "a_wants_b_score": 0.4472,
+    "b_wants_a_score": 0.4472,
+    "combined_score": 0.4472,
+    "top_match_reasons": [
+      "Shared interests: cooking, hiking, music.",
+      "Reciprocal semantic fit is 0.447 (A->B 0.447, B->A 0.447)."
+    ],
+    "review_status": "pending",
+    "human_eval_rating": null
+  },
+  {
+    "person_a_id": "alice",
+    "person_b_id": "cara",
+    "hard_filter_pass": false,
+    "a_wants_b_score": 0.0,
+    "b_wants_a_score": 0.0,
+    "combined_score": 0.0,
+    "top_match_reasons": [
+      "Relationship intent does not align.",
+      "Gender preference is incompatible or unknown."
+    ],
+    "review_status": "blocked",
+    "human_eval_rating": null
+  },
+  {
+    "person_a_id": "brian",
+    "person_b_id": "cara",
+    "hard_filter_pass": false,
+    "a_wants_b_score": 0.0,
+    "b_wants_a_score": 0.0,
+    "combined_score": 0.0,
+    "top_match_reasons": [
+      "Relationship intent does not align."
+    ],
+    "review_status": "blocked",
+    "human_eval_rating": null
+  }
+]

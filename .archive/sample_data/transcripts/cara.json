@@ -1,0 +1,14 @@
+{
+  "person_id": "cara",
+  "consent": true,
+  "chat_history": [
+    {
+      "role": "assistant",
+      "content": "What are you like and what are you looking for?"
+    },
+    {
+      "role": "user",
+      "content": "I'm a woman, 26, outgoing, ambitious, and really into travel, fitness, and art. I want a casual connection for now and I'm open to men. I want someone spontaneous and funny. Smoking is okay for me."
+    }
+  ]
+}
